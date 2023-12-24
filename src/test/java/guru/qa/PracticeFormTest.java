@@ -22,7 +22,7 @@ public class PracticeFormTest {
   }
   @Test
   void fillPracticeForm(){
-    
+    bug
     File test = new File("src/test/resources/Screenshot at Aug 28 13-08-24.png");
     
     open("/automation-practice-form");
