@@ -15,7 +15,7 @@ public class SimpleJUnitTest {
   }
   
   @AfterAll
-  static void asterll() {
+  static void asterAll() {
     System.out.println("### @BeforeAll");
   }
   
