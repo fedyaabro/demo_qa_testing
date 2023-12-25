@@ -8,8 +8,8 @@ import org.openqa.selenium.By;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTest {
   
@@ -23,27 +23,29 @@ public class PracticeFormTest {
   }
   @Test
   void fillPracticeForm(){
-    File test = new File("src/test/resources/Screenshot at Aug 28 13-08-24.png");
     open("/automation-practice-form");
+    executeJavaScript("$('#fixedban').remove()");
+    executeJavaScript("$('footer').remove()");
+    
     $("#firstName").setValue("firstName");
     $("#lastName").setValue("lastName");
     $("#userEmail").setValue("userEmail@userEmail.com");
-    $("#gender-radio-1").parent().click();
+    $(byText("Male")).parent().click();
     $("#userNumber").setValue("9955947011");
     $("#dateOfBirthInput").click();
     $(".react-datepicker__month-select").selectOption(3);
     $(".react-datepicker__year-select").selectOption(94);
     $(".react-datepicker__day--021").click();
     $("#subjectsInput").setValue("Math").pressEnter();
-    $("#hobbies-checkbox-1").parent().click();
-    $("#uploadPicture").uploadFile(test);
+    $(byText("Sports")).parent().click();
+    $("#uploadPicture").uploadFromClasspath("Screenshot at Aug 28 13-08-24.png");
     $("#currentAddress").setValue("currentAddress");
-    $("#state").click();
-    $("#react-select-3-input").setValue("Uttar").pressEnter();
-    $("#city").click();
-    $("#react-select-4-input").setValue("Merrut").pressEnter();
+    $("#state").scrollIntoView(true);
+    $("#stateCity-wrapper").find(byText("Select State")).click();
+    $(byText("Uttar Pradesh")).click();
+    $("#stateCity-wrapper").find(byText("Select City")).click();
+    $(byText("Lucknow")).click();
     $("#submit").click();
-    $(".table-responsive" ).click();
     
     //check
     $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
@@ -55,7 +57,7 @@ public class PracticeFormTest {
     $(By.tagName("tbody")).shouldHave(text("Sports"));
     $(By.tagName("tbody")).shouldHave(text("Screenshot at Aug 28 13-08-24.png"));
     $(By.tagName("tbody")).shouldHave(text("currentAddress"));
-    $(By.tagName("tbody")).shouldHave(text("Uttar Pradesh Merrut"));
+    $(By.tagName("tbody")).shouldHave(text("Uttar Pradesh Lucknow"));
     
   }
 }
