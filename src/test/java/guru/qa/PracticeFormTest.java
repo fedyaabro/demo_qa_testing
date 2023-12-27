@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -30,14 +29,14 @@ public class PracticeFormTest {
     $("#firstName").setValue("firstName");
     $("#lastName").setValue("lastName");
     $("#userEmail").setValue("userEmail@userEmail.com");
-    $(byText("Male")).parent().click();
+    $("#genterWrapper").$(byText("Male")).click();
     $("#userNumber").setValue("9955947011");
     $("#dateOfBirthInput").click();
     $(".react-datepicker__month-select").selectOption(3);
     $(".react-datepicker__year-select").selectOption(94);
     $(".react-datepicker__day--021").click();
     $("#subjectsInput").setValue("Math").pressEnter();
-    $(byText("Sports")).parent().click();
+    $("#hobbiesWrapper").$(byText("Sports")).click();
     $("#uploadPicture").uploadFromClasspath("Screenshot at Aug 28 13-08-24.png");
     $("#currentAddress").setValue("currentAddress");
     $("#state").scrollIntoView(true);
