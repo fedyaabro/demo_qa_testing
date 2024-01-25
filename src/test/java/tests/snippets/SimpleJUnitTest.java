@@ -1,4 +1,4 @@
-package tests;
+package tests.snippets;
 
 import org.junit.jupiter.api.*;
 

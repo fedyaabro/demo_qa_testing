@@ -1,4 +1,4 @@
-package tests;
+package tests.snippets;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.*;

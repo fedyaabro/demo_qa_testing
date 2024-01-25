@@ -1,7 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import pages.components.*;
+import pages.components.CalendarComponent;
+import pages.components.ModalWindowComponent;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -9,66 +10,83 @@ import static com.codeborne.selenide.Selenide.*;
 public class PracticeFormPage {
   
   private final SelenideElement
-                                genderRadioButton = $("#genterWrapper"),
-                                subjectInput = $("#subjectsInput"),
-                                hobbiesInput = $("#hobbiesWrapper"),
-                                stateSelect = $("#stateCity-wrapper").find(byText("Select State")),
-                                citySelect = $("#stateCity-wrapper").find(byText("Select City"));
-                                
+    firstNameInput = $("#firstName"),
+    lastNameInput = $("#lastName"),
+    emailInput = $("#userEmail"),
+    phoneInput = $("#userNumber"),
+    currentAddressInput = $("#currentAddress"),
+    genderRadioButton = $("#genterWrapper"),
+    subjectInput = $("#subjectsInput"),
+    hobbiesInput = $("#hobbiesWrapper"),
+    stateSelect = $("#stateCity-wrapper").find(byText("Select State")),
+    citySelect = $("#stateCity-wrapper").find(byText("Select City")),
+    uploadFile = $("#uploadPicture"),
+    submitButton = $("#submit");
   
   
   CalendarComponent calendarComponent = new CalendarComponent();
+  ModalWindowComponent modalWindowComponent = new ModalWindowComponent();
   
-  public PracticeFormPage openPracticeFormPage(){
+  public PracticeFormPage openPracticeFormPage() {
     open("/automation-practice-form");
     executeJavaScript("$('#fixedban').remove()");
     executeJavaScript("$('footer').remove()");
     return this;
   }
   
-  public PracticeFormPage setFirstName(String firstName){
-    SimpleFieldComponent.setFirstName(firstName);
+  public PracticeFormPage setFirstName(String firstName) {
+    firstNameInput.setValue(firstName);
     return this;
     
   }
-  public PracticeFormPage setLastName(String lastName){
-    SimpleFieldComponent.setLastName(lastName);
-    return this;
-  }
-  public PracticeFormPage setEmail(String email){
-    SimpleFieldComponent.setEmail(email);
-    return this;
-  }
-  public PracticeFormPage setGender(String value){
-    genderRadioButton.$(byText(value)).click();
-    return this;
-  }
-  public PracticeFormPage setUserNumber(String phone){
-    SimpleFieldComponent.setPhone(phone);
-    return this;
-  }
-  public PracticeFormPage setBirthDate(String month, Integer year, Integer day){
-    calendarComponent.setBirthDate(month, year, day);
-    return this;
-  }
-  public PracticeFormPage setSubject(String value){
-    subjectInput.setValue(value).pressEnter();
-    return this;
-  }
-  public PracticeFormPage setHobbies(String value){
-    hobbiesInput.$(byText(value)).click();;
+  
+  public PracticeFormPage setLastName(String lastName) {
+    lastNameInput.setValue(lastName);
     return this;
   }
   
-  public PracticeFormPage uploadFile(String fileName){
-    UploadComponent.uploadFile(fileName);
+  public PracticeFormPage setEmail(String email) {
+    emailInput.setValue(email);
     return this;
   }
-  public PracticeFormPage setCurrentAddress(String currentAddress){
-    SimpleFieldComponent.setCurrentAddress(currentAddress);
+  
+  public PracticeFormPage setGender(String value) {
+    genderRadioButton.$(byText(value)).click();
     return this;
   }
-  public PracticeFormPage setStateAndCity(String state, String city){
+  
+  public PracticeFormPage setUserNumber(String phone) {
+    phoneInput.setValue(phone);
+    return this;
+  }
+  
+  public PracticeFormPage setBirthDate(String month, Integer year, Integer day) {
+    calendarComponent.setBirthDate(month, year, day);
+    return this;
+  }
+  
+  public PracticeFormPage setSubject(String value) {
+    subjectInput.setValue(value).pressEnter();
+    return this;
+  }
+  
+  public PracticeFormPage setHobbies(String value) {
+    hobbiesInput.$(byText(value)).click();
+    ;
+    return this;
+  }
+  
+  public PracticeFormPage uploadFile(String fileName) {
+    uploadFile.uploadFromClasspath(fileName);
+    return this;
+  }
+  
+  public PracticeFormPage setCurrentAddress(String currentAddress) {
+    currentAddressInput.setValue(currentAddress);
+    return this;
+  }
+  
+  public PracticeFormPage setStateAndCity(String state, String city) {
     stateSelect.click();
     $(byText(state)).click();
     citySelect.click();
@@ -76,23 +94,23 @@ public class PracticeFormPage {
     return this;
   }
   
-  public PracticeFormPage clickSubmitButton(){
-    ButtonsComponent.clickSubmitButton();
+  public PracticeFormPage clickSubmitButton() {
+    submitButton.click();
     return this;
   }
   
-   public PracticeFormPage checkModalWindowTitle(String value){
-     ModalWindowComponent.checkModalWindowTitle(value);
+  public PracticeFormPage checkModalWindowTitle(String value) {
+    modalWindowComponent.checkModalWindowTitle(value);
     return this;
   }
   
-  public PracticeFormPage checkShortUserData(String rowName, String rowValue){
-    ModalWindowComponent.checkShortUserData(rowName, rowValue);
+  public PracticeFormPage checkShortUserData(String rowName, String rowValue) {
+    modalWindowComponent.checkShortUserData(rowName, rowValue);
     return this;
   }
   
-  public PracticeFormPage userInformationTableShouldNotBeVisible(){
-    ModalWindowComponent.userInformationTableShouldNotBeVisible();
+  public PracticeFormPage userInformationTableShouldNotBeVisible() {
+    modalWindowComponent.userInformationTableShouldNotBeVisible();
     return this;
   }
   
@@ -106,19 +124,19 @@ public class PracticeFormPage {
                                             String hobbies,
                                             String pictureName,
                                             String address,
-                                            String stateAndCity){
-     ModalWindowComponent.checkFullUserData(
-       studentName,
-       studentLastName,
-       studentEmail,
-       gender,
-       mobilePhone,
-       dateOfBirth,
-       subjects,
-       hobbies,
-       pictureName,
-       address,
-       stateAndCity);
+                                            String stateAndCity) {
+    modalWindowComponent.checkFullUserData(
+      studentName,
+      studentLastName,
+      studentEmail,
+      gender,
+      mobilePhone,
+      dateOfBirth,
+      subjects,
+      hobbies,
+      pictureName,
+      address,
+      stateAndCity);
     return this;
   }
 }

@@ -1,55 +1,60 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import pages.components.ButtonsComponent;
-import pages.components.SimpleFieldComponent;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxPage {
   
-  private final SelenideElement name = $("#output #name"),
-                                email = $("#output #email"),
-                                currentAddress = $("#output #currentAddress"),
-                                permanentAddress = $("#output #permanentAddress");
+  private final SelenideElement nameInput = $("#userName"),
+    emailInput = $("#userEmail"),
+    currentAddressInput = $("#currentAddress"),
+    permanentAddressInput = $("#permanentAddress"),
+    submitButton = $("#submit"),
+    output = $("#output");
   
   
-  public TextBoxPage openTextBoxPage(){
+  public TextBoxPage openTextBoxPage() {
     open("/text-box");
+    executeJavaScript("$('#fixedban').remove()");
+    executeJavaScript("$('footer').remove()");
     return this;
   }
   
-public TextBoxPage setUserName(String userName){
-    SimpleFieldComponent.setUserName(userName);
+  public TextBoxPage setUserName(String userName) {
+    nameInput.setValue(userName);
     return this;
   }
-public TextBoxPage setUserEmail(String userEmail){
-    SimpleFieldComponent.setEmail(userEmail);
+  
+  public TextBoxPage setUserEmail(String userEmail) {
+    emailInput.setValue(userEmail);
     return this;
   }
-public TextBoxPage setCurrentAddress(String currentAddress){
-    SimpleFieldComponent.setCurrentAddress(currentAddress);
+  
+  public TextBoxPage setCurrentAddress(String currentAddress) {
+    currentAddressInput.setValue(currentAddress);
     return this;
   }
-public TextBoxPage setPermanentAddress(String permanentAddress){
-    SimpleFieldComponent.setPermanentAddress(permanentAddress);
+  
+  public TextBoxPage setPermanentAddress(String permanentAddress) {
+    permanentAddressInput.setValue(permanentAddress);
     return this;
   }
-public TextBoxPage submitForm(){
-    ButtonsComponent.clickSubmitButton();
+  
+  public TextBoxPage submitForm() {
+    submitButton.click();
     return this;
   }
   
   public TextBoxPage checkResult(String userName,
                                  String userEmail,
                                  String userCurrentAddress,
-                                 String userPermanentAddress){
-    name.shouldHave(text(userName));
-    email.shouldHave(text(userEmail));
-    currentAddress.shouldHave(text(userCurrentAddress));
-    permanentAddress.shouldHave(text(userPermanentAddress));
+                                 String userPermanentAddress) {
+    output.$("#name").shouldHave(text(userName));
+    output.$("#email").shouldHave(text(userEmail));
+    output.$("#currentAddress").shouldHave(text(userCurrentAddress));
+    output.$("#permanentAddress").shouldHave(text(userPermanentAddress));
     return this;
   }
   

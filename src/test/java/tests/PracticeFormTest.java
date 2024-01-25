@@ -6,12 +6,12 @@ import pages.PracticeFormPage;
 
 public class PracticeFormTest extends TestBase {
   
-
+  
   PracticeFormPage practiceFormPage = new PracticeFormPage();
   
   @Test
   @DisplayName("Проверка полной формы")
-  void fillAndCheckFullPracticeForm(){
+  void fillAndCheckFullPracticeForm() {
     practiceFormPage
       .openPracticeFormPage()
       .setFirstName("firstName")
@@ -19,15 +19,15 @@ public class PracticeFormTest extends TestBase {
       .setEmail("userEmail@userEmail.com")
       .setGender("Male")
       .setUserNumber("9955947011")
-      .setBirthDate("May",1994,19)
+      .setBirthDate("May", 1994, 19)
       .setSubject("Math")
       .setHobbies("Sports")
       .uploadFile("Screenshot at Aug 28 13-08-24.png")
       .setCurrentAddress("currentAddress")
       .setStateAndCity("Uttar Pradesh", "Lucknow")
       .clickSubmitButton()
-
-    //check
+      
+      //check
       .checkModalWindowTitle("Thanks for submitting the form")
       .checkFullUserData(
         "firstName",
@@ -45,7 +45,7 @@ public class PracticeFormTest extends TestBase {
   
   @Test
   @DisplayName("Проверка минимального колличества данных")
-  void fillAndCheckShortPracticeForm(){
+  void fillAndCheckShortPracticeForm() {
     practiceFormPage
       .openPracticeFormPage()
       .setFirstName("firstName")
@@ -53,10 +53,10 @@ public class PracticeFormTest extends TestBase {
       .setEmail("userEmail@userEmail.com")
       .setUserNumber("9955947011")
       .setGender("Male")
-      .setBirthDate("May", 1994,19)
+      .setBirthDate("May", 1994, 19)
       .clickSubmitButton()
-    
-    //check
+      
+      //check
       .checkShortUserData("Student Name", "firstName lastName")
       .checkShortUserData("Student Email", "userEmail@userEmail.com")
       .checkShortUserData("Gender", "Male")
@@ -67,12 +67,10 @@ public class PracticeFormTest extends TestBase {
   
   @Test
   @DisplayName("Негативная проверка")
-  void informationTableShouldNotBeOpen(){
+  void informationTableShouldNotBeOpen() {
     practiceFormPage
       .openPracticeFormPage()
       .clickSubmitButton()
       .userInformationTableShouldNotBeVisible();
   }
-  
-  
 }
