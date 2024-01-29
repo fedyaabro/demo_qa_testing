@@ -27,6 +27,8 @@ public class PracticeFormPage {
   CalendarComponent calendarComponent = new CalendarComponent();
   ModalWindowComponent modalWindowComponent = new ModalWindowComponent();
   
+  //fake data
+  
   public PracticeFormPage openPracticeFormPage() {
     open("/automation-practice-form");
     executeJavaScript("$('#fixedban').remove()");
@@ -35,6 +37,12 @@ public class PracticeFormPage {
   }
   
   public PracticeFormPage setFirstName(String firstName) {
+    firstNameInput.setValue(firstName);
+    return this;
+    
+  }
+  
+  public PracticeFormPage setFirstNameTD(String firstName) {
     firstNameInput.setValue(firstName);
     return this;
     
