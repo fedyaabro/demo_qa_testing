@@ -16,7 +16,7 @@ public class TestData {
     lastName = testData.name().lastName(),
     email = testData.internet().emailAddress(),
     gender = getUserGender(),
-    phoneNumber = getPhoneNumber(),
+    phoneNumber = testData.number().digits(10),
     subjects = getSubjects(),
     hobbies = getHobbies(),
     file = "Screenshot at Aug 28 13-08-24.png",
@@ -29,10 +29,10 @@ public class TestData {
     dayOfBirth = getDayOfBirth(),
     yearOfBirth = getYearOfBirth();
   
-  public String getPhoneNumber() {
-    return "%s%s".formatted(getRandomInt(1, 9), getRandomInt(100000000, 999999999));
-  }
-  
+//  public String getPhoneNumber() {
+//    return "%s%s".formatted(getRandomInt(1, 9), getRandomInt(100000000, 999999999));
+//  }
+//
   
   public String getUserGender() {
     return testData.options().option("Male", "Female", "Other");
