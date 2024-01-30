@@ -9,41 +9,43 @@ public class PracticeFormTest extends TestBase {
   
   
   PracticeFormPage practiceFormPage = new PracticeFormPage();
-  TestData useTestData = new TestData();
+  RegistrationFormTestData registrationForm = new RegistrationFormTestData();
   
   
   @Test
   @DisplayName("Проверка полной формы")
   void fillAndCheckFullPracticeForm() {
     practiceFormPage
+      
       .openPracticeFormPage()
-      .setFirstName(useTestData.firstName)
-      .setLastName(useTestData.lastName)
-      .setEmail(useTestData.email)
-      .setGender(useTestData.gender)
-      .setUserNumber(useTestData.phoneNumber)
-      .setBirthDate(useTestData.monthOfBirth, useTestData.yearOfBirth, useTestData.dayOfBirth)
-      .setSubject(useTestData.subjects)
-      .setHobbies(useTestData.hobbies)
-      .uploadFile(useTestData.file)
-      .setCurrentAddress(useTestData.currentAddress)
-      .setStateAndCity(useTestData.state, useTestData.city)
+      .setFirstName(registrationForm.firstName)
+      .setLastName(registrationForm.lastName)
+      .setEmail(registrationForm.email)
+      .setGender(registrationForm.gender)
+      .setUserNumber(registrationForm.phoneNumber)
+      .setBirthDate(registrationForm.monthOfBirth,
+        registrationForm.yearOfBirth, registrationForm.dayOfBirth)
+      .setSubject(registrationForm.subjects)
+      .setHobbies(registrationForm.hobbies)
+      .uploadFile(registrationForm.file)
+      .setCurrentAddress(registrationForm.currentAddress)
+      .setStateAndCity(registrationForm.state, registrationForm.city)
       .clickSubmitButton()
       
       //check
       .checkModalWindowTitle("Thanks for submitting the form")
       .checkFullUserData(
-        useTestData.firstName,
-        useTestData.lastName,
-        useTestData.email,
-        useTestData.gender,
-        useTestData.phoneNumber,
-        "%s %s,%s".formatted(useTestData.dayOfBirth, useTestData.monthOfBirth, useTestData.yearOfBirth),
-        useTestData.subjects,
-        useTestData.hobbies,
-        useTestData.file,
-        useTestData.currentAddress,
-        "%s %s".formatted(useTestData.state, useTestData.city));
+        registrationForm.firstName,
+        registrationForm.lastName,
+        registrationForm.email,
+        registrationForm.gender,
+        registrationForm.phoneNumber,
+        "%s %s,%s".formatted(registrationForm.dayOfBirth, registrationForm.monthOfBirth, registrationForm.yearOfBirth),
+        registrationForm.subjects,
+        registrationForm.hobbies,
+        registrationForm.file,
+        registrationForm.currentAddress,
+        "%s %s".formatted(registrationForm.state, registrationForm.city));
   }
   
   @Test
@@ -51,23 +53,22 @@ public class PracticeFormTest extends TestBase {
   void fillAndCheckShortPracticeForm() {
     practiceFormPage
       .openPracticeFormPage()
-      .setFirstName(useTestData.firstName)
-      .setLastName(useTestData.lastName)
-      .setEmail(useTestData.email)
-      .setUserNumber(useTestData.phoneNumber)
-      .setGender(useTestData.gender)
-      .setBirthDate(useTestData.monthOfBirth, useTestData.yearOfBirth, useTestData.dayOfBirth)
+      .setFirstName(registrationForm.firstName)
+      .setLastName(registrationForm.lastName)
+      .setEmail(registrationForm.email)
+      .setUserNumber(registrationForm.phoneNumber)
+      .setGender(registrationForm.gender)
+      .setBirthDate(registrationForm.monthOfBirth, registrationForm.yearOfBirth, registrationForm.dayOfBirth)
       .clickSubmitButton()
       
       //check
-      .checkShortUserData("Student Name", useTestData.firstName + " " + useTestData.lastName)
-      .checkShortUserData("Student Email", useTestData.email)
-      .checkShortUserData("Gender", useTestData.gender)
-      .checkShortUserData("Mobile", useTestData.phoneNumber)
-      .checkShortUserData("Date of Birth", useTestData.dayOfBirth + " " +
-        useTestData.monthOfBirth + "," + useTestData.yearOfBirth);
+      .checkShortUserData("Student Name", registrationForm.firstName + " " + registrationForm.lastName)
+      .checkShortUserData("Student Email", registrationForm.email)
+      .checkShortUserData("Gender", registrationForm.gender)
+      .checkShortUserData("Mobile", registrationForm.phoneNumber)
+      .checkShortUserData("Date of Birth", registrationForm.dayOfBirth + " " +
+        registrationForm.monthOfBirth + "," + registrationForm.yearOfBirth);
   }
-  
   
   @Test
   @DisplayName("Негативная проверка")

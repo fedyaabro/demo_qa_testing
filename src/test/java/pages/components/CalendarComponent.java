@@ -23,7 +23,6 @@ public class CalendarComponent {
   
   private SelenideElement daySelector(String month, Integer day, Integer year) {
     String checkDate = "%s %s, %s".formatted(month, getReadableDate(day), year);
-    System.out.println(checkDate);
     return $(Selectors.byAttribute("aria-label*", checkDate));
   }
   
