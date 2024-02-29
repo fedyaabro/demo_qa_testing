@@ -1,4 +1,4 @@
-package tests;
+package tests.practiceFormTests;
 
 import com.github.javafaker.Faker;
 

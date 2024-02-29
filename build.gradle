@@ -1,18 +1,26 @@
 plugins {
     id("java")
+    id "io.qameta.allure-report" version "2.11.2"
 }
 
 group = "qa_guru_hw3"
 version = "1.0-SNAPSHOT"
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+
+    implementation 'io.qameta.allure:allure-selenide:2.25.0'
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
     testImplementation("com.codeborne:selenide:7.0.4")
     testImplementation ("com.github.javafaker:javafaker:1.0.2")
+    testImplementation platform("io.qameta.allure:allure-bom:2.25.0")
+    testImplementation "io.qameta.allure:allure-junit5"
+
+
 }
 
 tasks.test {
