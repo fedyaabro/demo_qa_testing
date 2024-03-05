@@ -6,8 +6,9 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import tests.githubTestsHw12.steps.GithubSteps;
+import tests.githubTestsHw12.steps.GithubStep;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -63,16 +64,17 @@ public class IssuesNameChecks {
   @Feature("Проверяем наличие заведенного инцидента на странице issues")
   @Story("Простой отчет со Steps")
   @Severity(SeverityLevel.MINOR)
+  @DisplayName("Вот так вот")
   void issuesPageShouldHaveTestIssuesSteps() {
     
     SelenideLogger.addListener("allure", new AllureSelenide());
-    GithubSteps steps = new GithubSteps();
+    GithubStep step = new GithubStep();
     
-    steps.openGithub();
-    steps.typeRequestAndPressEnter(requestText);
-    steps.clickOnFirstElementInList();
-    steps.goToIssueTab();
-    steps.findIssueByName(issueName);
+    step.openGithub();
+    step.typeRequestAndPressEnter(requestText);
+    step.clickOnFirstElementInList();
+    step.goToIssueTab();
+    step.findIssueByName(issueName);
     
   }
   
