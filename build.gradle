@@ -1,28 +1,47 @@
 plugins {
-    id("java")
-    id "io.qameta.allure-report" version "2.11.2"
+    id 'java'
+    id('io.qameta.allure') version '2.11.2'
 }
 
-group = "qa_guru_hw3"
-version = "1.0-SNAPSHOT"
+group = 'qa_guru_hw12'
+version = '1.0-SNAPSHOT'
 
+allure {
+    report {
+        version.set('2.25.0')
+    }
+    adapter {  //отвечает за появление папки build/allure-results
+        aspectjWeaver.set(true)  //обработка аннотанции @Step
+        frameworks {
+            junit5 {
+                adapterVersion.set('2.25.0')  //версия интеграции фреймворка и allure
+            }
+        }
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-
-    implementation 'io.qameta.allure:allure-selenide:2.25.0'
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
-    testImplementation("com.codeborne:selenide:7.0.4")
-    testImplementation ("com.github.javafaker:javafaker:1.0.2")
-    testImplementation platform("io.qameta.allure:allure-bom:2.25.0")
-    testImplementation "io.qameta.allure:allure-junit5"
-
-
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
 }
 
-tasks.test {
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter:5.10.1',
+            'com.codeborne:selenide:7.0.4',
+            'io.qameta.allure:allure-selenide:2.25.0',
+            'com.github.javafaker:javafaker:1.0.2'
+
+    )
+}
+
+test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }

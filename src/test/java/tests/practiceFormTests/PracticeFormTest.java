@@ -1,27 +1,26 @@
 package tests.practiceFormTests;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Feature;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.PracticeFormPage;
+import pages.RegistrationFormPage;
 import tests.TestBase;
+
+import static io.qameta.allure.Allure.step;
 
 
 public class PracticeFormTest extends TestBase {
   
   
-  PracticeFormPage practiceFormPage = new PracticeFormPage();
+  RegistrationFormPage practiceFormPage = new RegistrationFormPage();
   RegistrationFormTestData registrationForm = new RegistrationFormTestData();
   
   
   @Test
-  @Feature("Проверка полной форсы")
+  @Feature("Проверка полной формы регистрации")
   @DisplayName("Проверка полной формы")
   
   void fillAndCheckFullPracticeForm() {
-    SelenideLogger.addListener("allure", new AllureSelenide());
     
     practiceFormPage
       .openPracticeFormPage()
