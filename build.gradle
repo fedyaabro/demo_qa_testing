@@ -6,15 +6,18 @@ plugins {
 group = 'qa_guru_hw12'
 version = '1.0-SNAPSHOT'
 
+
 allure {
     report {
         version.set('2.25.0')
     }
     adapter {  //отвечает за появление папки build/allure-results
+        aspectjVersion.set('1.9.21.')
         aspectjWeaver.set(true)  //обработка аннотанции @Step
         frameworks {
             junit5 {
                 adapterVersion.set('2.25.0')  //версия интеграции фреймворка и allure
+
             }
         }
     }
@@ -30,6 +33,7 @@ compileJava {
 compileTestJava {
     options.encoding = 'UTF-8'
 }
+
 
 dependencies {
     testImplementation(
