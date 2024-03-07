@@ -52,8 +52,8 @@ tasks.withType(Test) {
     }
 }
 
-task testRegress(type: Test) {
+tasks.register ('simple_test', Test) {
     useJUnitPlatform {
-        includeTags("regress")
+        includeTags("simple")
     }
 }
