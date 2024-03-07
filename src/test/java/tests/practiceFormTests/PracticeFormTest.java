@@ -9,7 +9,7 @@ import tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
 
-@Tag("regress")
+@Tag("simple")
 public class PracticeFormTest extends TestBase {
   
   
