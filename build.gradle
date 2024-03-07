@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id('io.qameta.allure') version '2.11.2'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group = 'qa_guru_hw12'
@@ -52,8 +52,8 @@ tasks.withType(Test) {
     }
 }
 
-task smoketest(type: Test) {
+task testRegress(type: Test) {
     useJUnitPlatform {
-        includeTags("Regress")
+        includeTags("regress")
     }
 }
