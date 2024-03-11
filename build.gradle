@@ -12,7 +12,7 @@ allure {
         version.set('2.25.0')
     }
     adapter {  //отвечает за появление папки build/allure-results
-        aspectjVersion.set('1.9.21.')
+        aspectjVersion.set('1.9.21.1')
         aspectjWeaver.set(true)  //обработка аннотанции @Step
         frameworks {
             junit5 {
