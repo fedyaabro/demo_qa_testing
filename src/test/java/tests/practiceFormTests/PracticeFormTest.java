@@ -12,10 +12,8 @@ import static io.qameta.allure.Allure.step;
 @Tag("regress")
 public class PracticeFormTest extends TestBase {
   
-  
   RegistrationFormPage practiceFormPage = new RegistrationFormPage();
   RegistrationFormTestData registrationForm = new RegistrationFormTestData();
-  
   
   @Test
   @Feature("Проверка полной формы регистрации")
