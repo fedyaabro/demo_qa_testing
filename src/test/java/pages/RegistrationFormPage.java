@@ -1,14 +1,17 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import config.ProjectConfig;
 import io.qameta.allure.Step;
+import org.aeonbits.owner.ConfigFactory;
 import pages.components.CalendarComponent;
 import pages.components.ModalWindowComponent;
+import tests.TestBase;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationFormPage {
+public class RegistrationFormPage extends TestBase {
   
   private final SelenideElement
     firstNameInput = $("#firstName"),
@@ -27,6 +30,8 @@ public class RegistrationFormPage {
   
   CalendarComponent calendarComponent = new CalendarComponent();
   ModalWindowComponent modalWindowComponent = new ModalWindowComponent();
+  ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
+  
   
   //fake data
   
@@ -40,7 +45,7 @@ public class RegistrationFormPage {
   
   @Step("Заполняем имя")
   public RegistrationFormPage setFirstName(String firstName) {
-    firstNameInput.setValue(firstName);
+    firstNameInput.setValue(projectConfig.firstName());
     return this;
     
   }
@@ -54,7 +59,7 @@ public class RegistrationFormPage {
   
   @Step("Заполняем фамилию")
   public RegistrationFormPage setLastName(String lastName) {
-    lastNameInput.setValue(lastName);
+    lastNameInput.setValue(projectConfig.lastName());
     return this;
   }
   

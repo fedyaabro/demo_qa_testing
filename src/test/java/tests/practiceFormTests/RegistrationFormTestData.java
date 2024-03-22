@@ -21,7 +21,7 @@ public class RegistrationFormTestData {
     phoneNumber = faker.number().digits(10),
     subjects = getSubjects(),
     hobbies = getHobbies(),
-    file = "Screenshot at Aug 28 13-08-24.png",
+    file = "img/Screenshot at Aug 28 13-08-24.png",
     currentAddress = faker.address().streetAddress(),
     state = getState(),
     city = getCity(state),

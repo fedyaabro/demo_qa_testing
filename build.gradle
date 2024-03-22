@@ -38,6 +38,7 @@ compileTestJava {
 dependencies {
     testImplementation(
             'org.junit.jupiter:junit-jupiter:5.10.1',
+            'org.aeonbits.owner:owner:1.0.2',
             'com.codeborne:selenide:7.0.4',
             'io.qameta.allure:allure-selenide:2.25.0',
             'com.github.javafaker:javafaker:1.0.2'
@@ -59,5 +60,11 @@ tasks.withType(Test) {
 task regress(type: Test) {
     useJUnitPlatform{
         includeTags("regress")
+    }
+}
+
+task owner_tests(type: Test) {
+    useJUnitPlatform{
+        includeTags("owner_tests")
     }
 }
