@@ -18,14 +18,14 @@ public class TestBase {
     SelenideLogger.addListener("allure", new AllureSelenide());
     System.setProperty("environment", System.getProperty("environment", "prod"));
 //    Configuration.browserSize = "1920x1080";
-    Configuration.remote = System.getProperty("browserRemoteUrl");
+    Configuration.remote = System.getProperty("browserRemoteUrl","https://user1:1234@selenoid.autotests.cloud/wd/hub");
     Configuration.baseUrl = "https://demoqa.com";
     Configuration.pageLoadStrategy = "eager";
     Configuration.browser = System.getProperty("browser", "chrome");
     Configuration.browserVersion = System.getProperty("browserVersion", "113.0");
     Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
     
-//    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(
