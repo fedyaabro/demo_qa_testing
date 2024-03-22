@@ -10,7 +10,8 @@ import tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
 
-@Tags({@Tag("regress"),@Tag("owner_tests")})
+//@Tags({@Tag("regress"),@Tag("owner_tests")})
+@Tag("owner_tests")
 public class PracticeFormTest extends TestBase {
   
   RegistrationFormPage practiceFormPage = new RegistrationFormPage();
