@@ -1,17 +1,15 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import config.ProjectConfig;
 import io.qameta.allure.Step;
-import org.aeonbits.owner.ConfigFactory;
 import pages.components.CalendarComponent;
 import pages.components.ModalWindowComponent;
-import tests.TestBase;
+import tests.TestBaseRemote;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationFormPage extends TestBase {
+public class RegistrationFormPage extends TestBaseRemote {
   
   private final SelenideElement
     firstNameInput = $("#firstName"),

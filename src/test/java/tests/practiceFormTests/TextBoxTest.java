@@ -2,9 +2,9 @@ package tests.practiceFormTests;
 
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
-import tests.TestBase;
+import tests.TestBaseRemote;
 
-public class TextBoxTest extends TestBase {
+public class TextBoxTest extends TestBaseRemote {
   
   TextBoxPage textBoxPage = new TextBoxPage();
   
