@@ -3,6 +3,7 @@ package tests.practiceFormTests;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 import tests.TestBase;
