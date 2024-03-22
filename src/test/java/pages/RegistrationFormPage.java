@@ -30,7 +30,6 @@ public class RegistrationFormPage extends TestBase {
   
   CalendarComponent calendarComponent = new CalendarComponent();
   ModalWindowComponent modalWindowComponent = new ModalWindowComponent();
-  ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
   
   
   //fake data
