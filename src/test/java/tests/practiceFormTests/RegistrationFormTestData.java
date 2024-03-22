@@ -1,6 +1,8 @@
 package tests.practiceFormTests;
 
 import com.github.javafaker.Faker;
+import config.ProjectConfig;
+import org.aeonbits.owner.ConfigFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,10 +14,11 @@ public class RegistrationFormTestData {
   
   Faker faker = new Faker(new Locale("en"));
   Date birthDate = faker.date().birthday();
+  ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
   
   public String
-    firstName = faker.name().firstName(),
-    lastName = faker.name().lastName(),
+    firstName = projectConfig.firstName(),
+    lastName = projectConfig.lastName(),
     email = faker.internet().emailAddress(),
     gender = getUserGender(),
     phoneNumber = faker.number().digits(10),
