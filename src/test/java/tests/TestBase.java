@@ -16,13 +16,11 @@ public class TestBase {
   @BeforeAll
   static void beforeAll() {
     
-    SelenideLogger.addListener("allure", new AllureSelenide());
-    System.setProperty("environment", System.getProperty("environment", "stage"));
-    
-//    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+    Configuration.browserSize = "1920x1080";
     Configuration.baseUrl = "https://demoqa.com";
     Configuration.pageLoadStrategy = "eager";
-    Configuration.browserSize = "1920x1080";
+    SelenideLogger.addListener("allure", new AllureSelenide());
+    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";K
     
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(
