@@ -19,9 +19,9 @@ public class TestBase {
     System.setProperty("environment", System.getProperty("environment", "prod"));
     Configuration.baseUrl = "https://demoqa.com";
     Configuration.browser = System.getProperty("browser", "chrome");
-    Configuration.browserVersion = System.getProperty("browserVersion", "113.0");
+    Configuration.browserVersion = System.getProperty("browserVersion", "102.0");
     Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-    Configuration.remote = System.getProperty("browserRemoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+    Configuration.remote = System.getProperty("browserRemoteUrl");
     
     Configuration.pageLoadStrategy = "eager";
     SelenideLogger.addListener("allure", new AllureSelenide());
