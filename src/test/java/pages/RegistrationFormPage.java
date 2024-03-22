@@ -30,7 +30,7 @@ public class RegistrationFormPage extends TestBase {
   
   CalendarComponent calendarComponent = new CalendarComponent();
   ModalWindowComponent modalWindowComponent = new ModalWindowComponent();
-  ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
+//  ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
   
   
   //fake data
@@ -45,7 +45,7 @@ public class RegistrationFormPage extends TestBase {
   
   @Step("Заполняем имя")
   public RegistrationFormPage setFirstName(String firstName) {
-    firstNameInput.setValue(projectConfig.firstName());
+    firstNameInput.setValue(firstName);
     return this;
     
   }
@@ -59,7 +59,7 @@ public class RegistrationFormPage extends TestBase {
   
   @Step("Заполняем фамилию")
   public RegistrationFormPage setLastName(String lastName) {
-    lastNameInput.setValue(projectConfig.lastName());
+    lastNameInput.setValue(lastName);
     return this;
   }
   
