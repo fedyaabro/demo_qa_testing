@@ -21,7 +21,8 @@ public class TestBase {
     Configuration.browser = System.getProperty("browser", "chrome");
     Configuration.browserVersion = System.getProperty("browserVersion", "102.0");
     Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-    Configuration.remote = System.getProperty("browserRemoteUrl");
+//    Configuration.remote = System.getProperty("browserRemoteUrl");
+    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     
     Configuration.pageLoadStrategy = "eager";
     SelenideLogger.addListener("allure", new AllureSelenide());
