@@ -9,7 +9,7 @@ import tests.TestBaseRemote;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationFormPage extends TestBaseRemote {
+public class RegistrationFormPage {
   
   private final SelenideElement
     firstNameInput = $("#firstName"),

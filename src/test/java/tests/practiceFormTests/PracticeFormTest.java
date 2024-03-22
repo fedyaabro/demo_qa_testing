@@ -12,7 +12,7 @@ import tests.TestBaseRemote;
 import static io.qameta.allure.Allure.step;
 
 @Tags({@Tag("regress"),@Tag("owner_tests")})
-public class PracticeFormTest extends TestBase {
+public class PracticeFormTest extends TestBaseRemote {
   
   RegistrationFormPage practiceFormPage = new RegistrationFormPage();
   RegistrationFormTestData registrationForm = new RegistrationFormTestData();
