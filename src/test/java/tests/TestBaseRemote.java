@@ -6,6 +6,7 @@ import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -17,6 +18,7 @@ public class TestBaseRemote {
   static void beforeAll() {
     
     SelenideLogger.addListener("allure", new AllureSelenide());
+    System.setProperty("environment", System.getProperty("environment", "stage"));
     
     Configuration.remote = System.getProperty("browserRemoteUrl");
     Configuration.baseUrl = "https://demoqa.com";
@@ -25,7 +27,6 @@ public class TestBaseRemote {
     Configuration.browserVersion = System.getProperty("browserVersion", "113.0");
     Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
     
-    
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(
       "enableVNC", true,
@@ -33,7 +34,6 @@ public class TestBaseRemote {
     
     Configuration.browserCapabilities = capabilities;
   }
-  
   
   @AfterEach
   void addAttachments() {
