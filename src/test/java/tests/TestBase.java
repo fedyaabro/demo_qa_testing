@@ -17,8 +17,9 @@ public class TestBase {
   static void beforeAll() {
     
     SelenideLogger.addListener("allure", new AllureSelenide());
+    System.setProperty("environment", System.getProperty("environment", "stage"));
     
-    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     Configuration.baseUrl = "https://demoqa.com";
     Configuration.pageLoadStrategy = "eager";
     Configuration.browserSize = "1920x1080";
