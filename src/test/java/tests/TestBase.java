@@ -23,7 +23,6 @@ public class TestBase {
     Configuration.pageLoadStrategy = "eager";
     Configuration.browserSize = "1920x1080";
     
-    
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(
       "enableVNC", true,
