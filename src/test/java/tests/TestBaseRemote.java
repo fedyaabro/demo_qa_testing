@@ -20,10 +20,11 @@ public class TestBaseRemote {
     SelenideLogger.addListener("allure", new AllureSelenide());
     System.setProperty("environment", System.getProperty("environment", "stage"));
     
-    Configuration.remote = System.getProperty("browserRemoteUrl");
+    
     Configuration.baseUrl = "https://demoqa.com";
     Configuration.pageLoadStrategy = "eager";
     Configuration.browser = System.getProperty("browser", "chrome");
+    Configuration.remote = System.getProperty("browserRemoteUrl");
     Configuration.browserVersion = System.getProperty("browserVersion", "113.0");
     Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
     
