@@ -11,12 +11,12 @@ import tests.TestBaseRemote;
 
 import static io.qameta.allure.Allure.step;
 
+@Tag("owner_tests")
 public class PracticeFormTest extends TestBaseRemote {
   
   RegistrationFormPage practiceFormPage = new RegistrationFormPage();
   RegistrationFormTestData registrationForm = new RegistrationFormTestData();
   
-  @Tag("owner_tests")
   @Test
   @DisplayName("Негативная проверка")
   void informationTableShouldNotBeOpen() {
@@ -26,7 +26,6 @@ public class PracticeFormTest extends TestBaseRemote {
       .userInformationTableShouldNotBeVisible();
   }
   
-  @Tag("owner_tests")
   @Test
   @Feature("Проверка полной формы регистрации")
   @DisplayName("Проверка полной формы")
@@ -65,7 +64,6 @@ public class PracticeFormTest extends TestBaseRemote {
         "%s %s".formatted(registrationForm.state, registrationForm.city));
   }
   
-  @Tag("owner_tests")
   @Test
   @DisplayName("Проверка минимального колличества данных")
   void fillAndCheckShortPracticeForm() {
