@@ -18,15 +18,16 @@ public class TestBaseRemote {
   @BeforeAll
   static void beforeAll() {
     
-    System.setProperty("environment", System.getProperty("environment", "stage"));
-    
-    
+    System.setProperty("environment", System.getProperty("environment", "prod"));
+    Configuration.remote = System.getProperty("browserRemoteUrl");
     Configuration.baseUrl = "https://demoqa.com";
     Configuration.pageLoadStrategy = "eager";
     Configuration.browser = System.getProperty("browser", "chrome");
-    Configuration.remote = System.getProperty("browserRemoteUrl");
-    Configuration.browserVersion = System.getProperty("browserVersion", "113.0");
+    Configuration.browserVersion = System.getProperty("browserVersion", "99.0");
     Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+    
+    
+    
     
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(

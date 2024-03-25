@@ -11,18 +11,28 @@ import tests.TestBaseRemote;
 
 import static io.qameta.allure.Allure.step;
 
-@Tags({@Tag("regress"),@Tag("owner_tests")})
 public class PracticeFormTest extends TestBaseRemote {
   
   RegistrationFormPage practiceFormPage = new RegistrationFormPage();
   RegistrationFormTestData registrationForm = new RegistrationFormTestData();
   
+  @Tag("owner_tests")
+  @Test
+  @DisplayName("Негативная проверка")
+  void informationTableShouldNotBeOpen() {
+    practiceFormPage
+      .openPracticeFormPage()
+      .clickSubmitButton()
+      .userInformationTableShouldNotBeVisible();
+  }
+  
+  @Tag("owner_tests")
   @Test
   @Feature("Проверка полной формы регистрации")
   @DisplayName("Проверка полной формы")
   
   void fillAndCheckFullPracticeForm() {
-    
+
     practiceFormPage
       .openPracticeFormPage()
       .setFirstName(registrationForm.firstName)
@@ -38,7 +48,7 @@ public class PracticeFormTest extends TestBaseRemote {
       .setCurrentAddress(registrationForm.currentAddress)
       .setStateAndCity(registrationForm.state, registrationForm.city)
       .clickSubmitButton()
-      
+
       //check
       .checkModalWindowTitle("Thanks for submitting the form")
       .checkFullUserData(
@@ -55,6 +65,7 @@ public class PracticeFormTest extends TestBaseRemote {
         "%s %s".formatted(registrationForm.state, registrationForm.city));
   }
   
+  @Tag("owner_tests")
   @Test
   @DisplayName("Проверка минимального колличества данных")
   void fillAndCheckShortPracticeForm() {
@@ -67,7 +78,7 @@ public class PracticeFormTest extends TestBaseRemote {
       .setGender(registrationForm.gender)
       .setBirthDate(registrationForm.monthOfBirth, registrationForm.yearOfBirth, registrationForm.dayOfBirth)
       .clickSubmitButton()
-      
+
       //check
       .checkShortUserData("Student Name", registrationForm.firstName + " " + registrationForm.lastName)
       .checkShortUserData("Student Email", registrationForm.email)
@@ -77,12 +88,5 @@ public class PracticeFormTest extends TestBaseRemote {
         registrationForm.monthOfBirth + "," + registrationForm.yearOfBirth);
   }
   
-  @Test
-  @DisplayName("Негативная проверка")
-  void informationTableShouldNotBeOpen() {
-    practiceFormPage
-      .openPracticeFormPage()
-      .clickSubmitButton()
-      .userInformationTableShouldNotBeVisible();
-  }
+
 }
