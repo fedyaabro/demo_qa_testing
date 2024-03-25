@@ -64,6 +64,7 @@ task regress(type: Test) {
 }
 
 task owner_tests(type: Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform{
         includeTags("owner_tests")
     }
