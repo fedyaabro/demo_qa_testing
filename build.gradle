@@ -48,7 +48,7 @@ dependencies {
 
 tasks.withType(Test) {
     useJUnitPlatform()
-
+    systemProperties(System.getProperties())
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
@@ -64,7 +64,6 @@ task regress(type: Test) {
 }
 
 task owner_tests(type: Test) {
-    systemProperties(System.getProperties())
     useJUnitPlatform{
         includeTags("owner_tests")
     }
