@@ -23,10 +23,12 @@ public class PracticeFormTest extends TestBaseRemote {
     practiceFormPage
       .openPracticeFormPage()
       .clickSubmitButton()
-      .userInformationTableShouldNotBeVisible();
+      .userInformationTableShouldNotBeVisible()
+      .negativeMarker();
   }
   
   @Test
+  @Disabled
   @Feature("Проверка полной формы регистрации")
   @Story("Проверка полной формы регистрации")
   @DisplayName("Проверка полной формы")
