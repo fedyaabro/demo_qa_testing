@@ -8,6 +8,8 @@ import tests.TestBaseRemote;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class RegistrationFormPage {
   
@@ -152,6 +154,12 @@ public class RegistrationFormPage {
       pictureName,
       address,
       stateAndCity);
+    return this;
+  }
+  
+  @Step("Маркер для негативного теста")
+  public RegistrationFormPage negativeMarker() {
+    fail();
     return this;
   }
 }

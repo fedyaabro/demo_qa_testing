@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "demoqa",
+    "environment": "some env",
+    "comment": "comment",
+    "reportLink": "https://jenkins.autotests.cloud/job/024_fedya_abro_qaguru_qaform_owner_tests/35/allure/",
+    "language": "en",
+    "messenger": "telegram",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6841719723:AAEiTsggBpIJ-nGCmHgd_Q_RXeWtLTVq0Ww",
+    "chat": "-1002008838861",
+    "replyTo": ""
+  }
+}

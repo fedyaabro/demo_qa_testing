@@ -1,10 +1,8 @@
 package tests.practiceFormTests;
 
 import io.qameta.allure.Feature;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.*;
 import pages.RegistrationFormPage;
 import tests.TestBase;
 import tests.TestBaseRemote;
@@ -12,6 +10,7 @@ import tests.TestBaseRemote;
 import static io.qameta.allure.Allure.step;
 
 @Tag("owner_tests")
+@Feature("Проверка формы demoqa.com")
 public class PracticeFormTest extends TestBaseRemote {
   
   RegistrationFormPage practiceFormPage = new RegistrationFormPage();
@@ -19,15 +18,19 @@ public class PracticeFormTest extends TestBaseRemote {
   
   @Test
   @DisplayName("Негативная проверка")
+  @Story("Негативная проверка")
   void informationTableShouldNotBeOpen() {
     practiceFormPage
       .openPracticeFormPage()
       .clickSubmitButton()
-      .userInformationTableShouldNotBeVisible();
+      .userInformationTableShouldNotBeVisible()
+      .negativeMarker();
+    
   }
   
   @Test
   @Feature("Проверка полной формы регистрации")
+  @Story("Проверка полной формы регистрации")
   @DisplayName("Проверка полной формы")
   
   void fillAndCheckFullPracticeForm() {
@@ -66,6 +69,7 @@ public class PracticeFormTest extends TestBaseRemote {
   
   @Test
   @DisplayName("Проверка минимального колличества данных")
+  @Story("Проверка минимального колличества данных")
   void fillAndCheckShortPracticeForm() {
     practiceFormPage
       .openPracticeFormPage()
