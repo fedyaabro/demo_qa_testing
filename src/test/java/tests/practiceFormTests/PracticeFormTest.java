@@ -23,9 +23,7 @@ public class PracticeFormTest extends TestBaseRemote {
     practiceFormPage
       .openPracticeFormPage()
       .clickSubmitButton()
-      .userInformationTableShouldNotBeVisible()
-      .negativeMarker();
-    
+      .userInformationTableShouldNotBeVisible();
   }
   
   @Test
